@@ -1,7 +1,7 @@
-module Statistics.Distributions.Binomial
+module Statistics.Distribution.Binomial
 
 import Data.List
-import Dist.Uniform
+import Statistics.Distribution.Uniform
 
 {-
 binomial : (n : Nat) -> (p : Double) -> IO Nat

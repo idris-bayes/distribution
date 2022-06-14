@@ -1,4 +1,4 @@
-module Statistics.Distributions.Uniform
+module Statistics.Distribution.Uniform
 
 public export
 uniform : Double -> Double -> Double -> Double
