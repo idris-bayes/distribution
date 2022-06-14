@@ -1,3 +1,5 @@
 package distributions
 
---modules = Statistics.Distributions.Uniform, Statistics.Distributions.Normal, Statistics.Distributions.Binomial
+modules = Statistics.Distributions.Uniform
+        , Statistics.Distributions.Normal
+        , Statistics.Distributions.Binomial
