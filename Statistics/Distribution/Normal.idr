@@ -16,4 +16,8 @@ normal mu std r1 r2 = mu + std * box_muller r1 r2
 
 export
 %foreign "C:gsl_ran_gaussian_pdf,libgsl"
-normal_pdf : Double -> Double -> Double 
+normal_pdf' : Double -> Double -> Double 
+
+public export
+normal_pdf : Double -> Double -> Double -> Double
+normal_pdf mu std y = normal_pdf' (y - mu) std

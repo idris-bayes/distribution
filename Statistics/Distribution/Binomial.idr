@@ -13,6 +13,7 @@ binomial n p = do
 %foreign "C:gsl_ran_binomial_pdf,libgsl"
 binomial_pdf' : Int -> Double -> Int -> Double
 
+public export
 binomial_pdf : Nat -> Double -> Nat -> Double
 binomial_pdf n p y = binomial_pdf' (cast n) p (cast y)
 
