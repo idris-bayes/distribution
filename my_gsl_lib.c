@@ -11,4 +11,4 @@ gsl_rng* init_gsl_rng() {
   return r;    
 }
 
-// cc -shared -fPIC libm.c -o libm.so -lm -lgsl
+// cc -shared -fPIC my_gsl_lib.c -o my_gsl_lib.so -lm -lgsl

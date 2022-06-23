@@ -4,7 +4,7 @@ public export
 data GslRng : Type where
   MkGslRng : AnyPtr -> GslRng
 
-%foreign "C:init_gsl_rng,libm"
+%foreign "C:init_gsl_rng,my_gsl_lib"
 init_rng_c : AnyPtr
 
 export
