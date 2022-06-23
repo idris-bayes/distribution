@@ -4,3 +4,4 @@ modules = Statistics.Distribution.Uniform
         , Statistics.Distribution.Normal
         , Statistics.Distribution.Binomial
         , Statistics.Distribution.GSL
+        , Statistics.Distribution.Test
