@@ -15,7 +15,7 @@ binomial_pdf' : Int -> Double -> Int -> Double
 
 export
 binomial_pdf : Nat -> Double -> Nat -> Double
-binomial_pdf n p y = binomial_pdf' (cast n) p (cast y)
+binomial_pdf n p y = binomial_pdf' (cast y) p  (cast n)
 
 {-
 binomial : (n : Nat) -> (p : Double) -> IO Nat
