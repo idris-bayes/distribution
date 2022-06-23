@@ -1,8 +1,25 @@
 module Statistics.Distribution.Normal
 
+import Statistics.Distribution.GSL
 import Statistics.Distribution.Uniform
 import System.FFI
 
+{- GSL -}
+%foreign "C:gsl_ran_gaussian,libgsl"
+normal_gsl_c : AnyPtr -> Double -> Double
+
+export
+normal_gsl : Double -> Double -> GslRng -> Double
+normal_gsl mu std (MkGslRng seed) = mu + normal_gsl_c seed std
+
+%foreign "C:gsl_ran_gaussian_pdf,libgsl"
+normal_pdf_c : Double -> Double -> Double 
+
+export
+normal_pdf : Double -> Double -> Double -> Double
+normal_pdf mu std y = normal_pdf_c (y - mu) std
+
+{- Custom -}
 ||| Box muller transform to sample from standard normal distribution of mean 0 and standard deviation 1.
 box_muller : Double -> Double -> Double
 box_muller u1 u2 = sqrt (-2 * log u1) * cos (2 * pi * u2)
@@ -13,11 +30,3 @@ normal : (mean : Double) -> (std : Double)                --     -> {auto _ : (s
       -> (r1 : Double) -> (r2 : Double)
       -> Double
 normal mu std r1 r2 = mu + std * box_muller r1 r2
-
-export
-%foreign "C:gsl_ran_gaussian_pdf,libgsl"
-normal_pdf' : Double -> Double -> Double 
-
-public export
-normal_pdf : Double -> Double -> Double -> Double
-normal_pdf mu std y = normal_pdf' (y - mu) std

@@ -1,7 +1,21 @@
 module Statistics.Distribution.Binomial
 
-import Data.List
-import Statistics.Distribution.Uniform
+import Statistics.Distribution.GSL
+
+{- GSL -}
+%foreign "C:gsl_ran_binomial, libgsl"
+binomial_gsl_c : AnyPtr -> Double -> Int -> Int
+
+export 
+binomial_gsl : Nat -> Double -> GslRng -> Int
+binomial_gsl n p (MkGslRng seed) = binomial_gsl_c seed p (cast n)
+
+%foreign "C:gsl_ran_binomial_pdf,libgsl"
+binomial_pdf' : Int -> Double -> Int -> Double
+
+export
+binomial_pdf : Nat -> Double -> Nat -> Double
+binomial_pdf n p y = binomial_pdf' (cast n) p (cast y)
 
 {-
 binomial : (n : Nat) -> (p : Double) -> IO Nat
@@ -9,13 +23,6 @@ binomial n p = do
          x <- replicateM n (uniform 0 1)
          pure . length . filter (< p) $ x
 -}
-
-%foreign "C:gsl_ran_binomial_pdf,libgsl"
-binomial_pdf' : Int -> Double -> Int -> Double
-
-public export
-binomial_pdf : Nat -> Double -> Nat -> Double
-binomial_pdf n p y = binomial_pdf' (cast n) p (cast y)
 
 {-
 binomial_pdf'' : Int -> Double -> Int -> Double
