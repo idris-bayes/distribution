@@ -1,9 +1,11 @@
 module Statistics.Distribution.GSL
 
+||| Container for a GSL RNG seed
 public export
 data GslRng : Type where
   MkGslRng : AnyPtr -> GslRng
 
+||| Initialise a GSL RNG seed
 %foreign "C:init_gsl_rng,my_gsl_lib"
 init_rng_c : AnyPtr
 

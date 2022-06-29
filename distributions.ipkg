@@ -3,5 +3,7 @@ package distributions
 modules = Statistics.Distribution.Uniform
         , Statistics.Distribution.Normal
         , Statistics.Distribution.Binomial
+        , Statistics.Distribution.Beta
+        , Statistics.Distribution.Gamma
         , Statistics.Distribution.GSL
         , Statistics.Distribution.Test
