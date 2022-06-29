@@ -5,5 +5,7 @@ modules = Statistics.Distribution.Uniform
         , Statistics.Distribution.Binomial
         , Statistics.Distribution.Beta
         , Statistics.Distribution.Gamma
+        , Statistics.Distribution.Geometric
+        , Statistics.Distribution.Poisson
         , Statistics.Distribution.GSL
         , Statistics.Distribution.Test
