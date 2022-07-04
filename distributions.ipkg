@@ -1,4 +1,7 @@
 package distributions
+authors   = "Minh Nguyen and Jacob Walters"
+license   = "The BSD 3-Clause License"
+sourceloc = "www.github.com/idris-bayes/distributions"
 
 modules = Statistics.Distribution.Uniform
         , Statistics.Distribution.Normal

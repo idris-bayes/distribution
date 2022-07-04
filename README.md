@@ -1,0 +1,1 @@
+An Idris2 foreign function interface for various statistical distributions in the GSL C library.
