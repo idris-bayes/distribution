@@ -10,5 +10,6 @@ modules = Statistics.Distribution.Uniform
         , Statistics.Distribution.Gamma
         , Statistics.Distribution.Geometric
         , Statistics.Distribution.Poisson
+        , Statistics.Distribution.Dirichlet
         , Statistics.Distribution.GSL
         , Statistics.Distribution.Test

@@ -2,6 +2,23 @@
 #include <math.h>
 #include <gsl/gsl_rng.h>
 
+double* assign_array(double* ptr, int idx, double x) {
+  ptr[idx] = x;
+  return ptr;
+}
+
+double* init_array(int size) {
+  double *array;
+  array = malloc(size * sizeof (double));
+  return array;
+}
+
+void* print_array(double* ptr, int size) {
+  for(int i = 0; i < size; i ++){
+    printf("%f ", ptr[i]);
+  }
+}
+
 gsl_rng* init_gsl_rng() {
   gsl_rng* r;
   gsl_rng_env_setup();
