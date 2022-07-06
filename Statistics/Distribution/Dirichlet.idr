@@ -9,7 +9,7 @@ import Data.Vect
 dirichlet_gsl_c : (seed : AnyPtr) -> (size : Int) -> (alphas : AnyPtr) -> (output : AnyPtr) -> PrimIO ()
 
 export
-dirichlet_gsl : HasIO io => {n : Nat} -> (alphas : Vect (S n) Double) -> GslRng -> io (Vect (S n) Double)
+dirichlet_gsl : {n : Nat} -> (alphas : Vect (S n) Double) -> GslRng -> IO (Vect (S n) Double)
 dirichlet_gsl alphas (MkGslRng seed) = do
   let alphas_ptr = to_array alphas
       output_ptr = init_array (S n) 

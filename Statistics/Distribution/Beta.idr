@@ -6,11 +6,11 @@ import Data.So
 {- GSL -}
 ||| Sample from Beta distribution
 %foreign "C:gsl_ran_beta,libgsl"
-beta_gsl_c : (seed : AnyPtr) -> (a : Double) -> (b : Double) -> Double
+beta_gsl_c : (seed : AnyPtr) -> (a : Double) -> (b : Double) -> PrimIO Double
 
 export
 beta_gsl : (a : Double) -> (b : Double) -> GslRng -> IO Double
-beta_gsl a b (MkGslRng seed) = pure $ beta_gsl_c seed a b
+beta_gsl a b (MkGslRng seed) = primIO $ beta_gsl_c seed a b
 
 ||| Compute PDF from Beta distribution
 %foreign "C:gsl_ran_beta_pdf,libgsl"

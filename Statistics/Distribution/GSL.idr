@@ -35,7 +35,7 @@ print_array_c : (base_ptr : AnyPtr) -> (n : Int) -> PrimIO ()
 %foreign "C:index_array, distributions"
 index_array_c : (base_ptr : AnyPtr) -> (idx : Int) -> Double 
 
-public export
+export
 rangeTo : (n : Nat) -> Vect n Nat
 rangeTo Z = []
 rangeTo (S n) = snoc (rangeTo n) (n)
