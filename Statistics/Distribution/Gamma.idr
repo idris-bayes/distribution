@@ -6,11 +6,11 @@ import Statistics.Distribution.GSL
 {- GSL -}
 ||| Sample from Gamma distribution
 %foreign "C:gsl_ran_gamma,libgsl"
-gamma_gsl_c : AnyPtr -> (a : Double) -> (b : Double) -> Double
+gamma_gsl_c : (seed : AnyPtr) -> (a : Double) -> (b : Double) -> Double
 
 export
-gamma_gsl : (a : Double) -> (b : Double) -> GslRng -> Double
-gamma_gsl a b (MkGslRng seed) = gamma_gsl_c seed a b
+gamma_gsl : (a : Double) -> (b : Double) -> GslRng -> IO Double
+gamma_gsl a b (MkGslRng seed) = pure $ gamma_gsl_c seed a b
 
 ||| Compute PDF from Gamma distribution
 %foreign "C:gsl_ran_gamma_pdf,libgsl"

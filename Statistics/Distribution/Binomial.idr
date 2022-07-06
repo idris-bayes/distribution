@@ -5,11 +5,11 @@ import Statistics.Distribution.GSL
 {- GSL -}
 ||| Sample from Binomial distribution
 %foreign "C:gsl_ran_binomial, libgsl"
-binomial_gsl_c : AnyPtr -> (p : Double) -> (n : Int) -> Int
+binomial_gsl_c : (seed : AnyPtr) -> (p : Double) -> (n : Int) -> Int
 
 export 
-binomial_gsl : (n : Nat) -> (p : Double) -> GslRng -> Nat
-binomial_gsl n p (MkGslRng seed) = cast (binomial_gsl_c seed p (cast n))
+binomial_gsl : (n : Nat) -> (p : Double) -> GslRng -> IO Nat
+binomial_gsl n p (MkGslRng seed) = pure $ cast (binomial_gsl_c seed p (cast n))
 
 ||| Compute PDF from Binomial distribution
 %foreign "C:gsl_ran_binomial_pdf,libgsl"

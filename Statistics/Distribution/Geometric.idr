@@ -5,11 +5,11 @@ import Statistics.Distribution.GSL
 {- GSL -}
 ||| Sample from Geometric distribution
 %foreign "C:gsl_ran_geometric,libgsl"
-geometric_gsl_c : AnyPtr -> (p : Double) -> Int
+geometric_gsl_c : (seed : AnyPtr) -> (p : Double) -> Int
 
 export
-geometric_gsl : (p : Double) -> GslRng -> Nat
-geometric_gsl p (MkGslRng seed) = cast (geometric_gsl_c seed p)
+geometric_gsl : (p : Double) -> GslRng -> IO Nat
+geometric_gsl p (MkGslRng seed) = pure $ cast (geometric_gsl_c seed p)
 
 ||| Compute PDF from Geometric distribution
 %foreign "C:gsl_ran_geometric_pdf,libgsl"

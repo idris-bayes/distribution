@@ -8,11 +8,11 @@ import System.FFI
 {- GSL -}
 ||| Sample from Normal distribution
 %foreign "C:gsl_ran_gaussian,libgsl"
-normal_gsl_c : AnyPtr -> (std : Double) -> Double
+normal_gsl_c : (seed : AnyPtr) -> (std : Double) -> Double
 
 export
-normal_gsl : (mu : Double) -> (std : Double) -> GslRng -> Double
-normal_gsl mu std (MkGslRng seed) = mu + normal_gsl_c seed std
+normal_gsl : (mu : Double) -> (std : Double) -> GslRng -> IO Double
+normal_gsl mu std (MkGslRng seed) = pure $ mu + normal_gsl_c seed std
 
 ||| Compute PDF from Normal distribution
 %foreign "C:gsl_ran_gaussian_pdf,libgsl"

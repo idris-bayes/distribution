@@ -2,15 +2,19 @@
 #include <math.h>
 #include <gsl/gsl_rng.h>
 
+double* init_array(int size) {
+  double *array;
+  array = malloc(size * sizeof (double));
+  return array;
+}
+
 double* assign_array(double* ptr, int idx, double x) {
   ptr[idx] = x;
   return ptr;
 }
 
-double* init_array(int size) {
-  double *array;
-  array = malloc(size * sizeof (double));
-  return array;
+double index_array(double* ptr, int idx) {
+  return ptr[idx];
 }
 
 void* print_array(double* ptr, int size) {

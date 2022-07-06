@@ -6,11 +6,11 @@ import Statistics.Distribution.GSL
 {- GSL -}
 ||| Sample from Uniform distribution
 %foreign "C:gsl_ran_flat, libgsl"
-uniform_gsl_c : AnyPtr -> (min : Double) -> (max : Double) -> Double
+uniform_gsl_c : (seed : AnyPtr) -> (min : Double) -> (max : Double) -> Double
 
 public export
-uniform_gsl :(min : Double) -> (max : Double) -> GslRng -> Double
-uniform_gsl min max (MkGslRng seed) = uniform_gsl_c seed min max
+uniform_gsl :(min : Double) -> (max : Double) -> GslRng -> IO Double
+uniform_gsl min max (MkGslRng seed) = pure $ uniform_gsl_c seed min max
 
 ||| Compute PDF from Uniform distribution
 public export
