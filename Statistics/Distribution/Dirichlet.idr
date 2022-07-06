@@ -18,7 +18,7 @@ dirichlet_gsl alphas (MkGslRng seed) = do
 
 ||| Compute PDF from Dirichlet distribution
 %foreign "C:gsl_ran_dirichlet_pdf,libgsl"
-dirichlet_pdf_c : Int -> AnyPtr -> AnyPtr -> Double
+dirichlet_pdf_c : (size : Int) -> (alphas : AnyPtr) -> (obs : AnyPtr) -> Double
 
 export
 dirichlet_pdf : {n : Nat} -> (alphas : Vect (S n) Double) -> (obs : Vect (S n) Double) -> Double
@@ -26,7 +26,3 @@ dirichlet_pdf alphas ys =
   let alphas_ptr = to_array alphas
       ys_ptr     = to_array ys
   in dirichlet_pdf_c (cast $ S n) alphas_ptr ys_ptr
-
-export
-t : Double
-t = dirichlet_pdf [0.1,0.3,0.6] [0.2,0.2,0.6]
