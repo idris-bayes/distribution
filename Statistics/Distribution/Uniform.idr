@@ -23,6 +23,6 @@ gsl_uniform_pdf min max y with (y < max && y > min)
 %foreign "C:gsl_cdf_flat_Pinv, libgsl"
 gsl_uniform_cdf_inv_c : (r : Double) -> (min : Double) -> (max : Double) -> Double
 
-export
+public export
 gsl_uniform_cdf_inv : (min : Double) -> (max : Double) -> (r : Double) -> Double
 gsl_uniform_cdf_inv min max r = gsl_uniform_cdf_inv_c r min max 
