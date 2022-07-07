@@ -5,24 +5,24 @@ import Statistics.Distribution.GSL
 
 ||| Sample from Gamma distribution
 %foreign "C:gsl_ran_gamma,libgsl"
-gamma_c : (seed : AnyPtr) -> (a : Double) -> (b : Double) -> PrimIO Double
+gsl_gamma_c : (seed : AnyPtr) -> (a : Double) -> (b : Double) -> PrimIO Double
 
 export
-gamma : (a : Double) -> (b : Double) -> GslRng -> IO Double
-gamma a b (MkGslRng seed) = primIO $ gamma_c seed a b
+gsl_gamma : (a : Double) -> (b : Double) -> GslRng -> IO Double
+gsl_gamma a b (MkGslRng seed) = primIO $ gsl_gamma_c seed a b
 
 ||| Compute PDF from Gamma distribution
 %foreign "C:gsl_ran_gamma_pdf,libgsl"
-gamma_pdf_c : (obs : Double) -> (a : Double) -> (b : Double) -> Double
+gsl_gamma_pdf_c : (obs : Double) -> (a : Double) -> (b : Double) -> Double
 
 export
-gamma_pdf : (a : Double) -> (b : Double) -> (obs : Double) -> Double
-gamma_pdf a b y = gamma_pdf_c y a b
+gsl_gamma_pdf : (a : Double) -> (b : Double) -> (obs : Double) -> Double
+gsl_gamma_pdf a b y = gsl_gamma_pdf_c y a b
 
 ||| Sample from Gamma distribution using inverse CDF. It must hold that '0 < r < 1'.
 %foreign "C:gsl_cdf_gamma_Pinv,libgsl"
-gamma_cdf_inv_c : (r : Double) -> (a : Double) -> (b : Double) -> Double
+gsl_gamma_cdf_inv_c : (r : Double) -> (a : Double) -> (b : Double) -> Double
 
 export
-gamma_cdf_inv : (a : Double) -> (b : Double) -> (r : Double) -> Double
-gamma_cdf_inv a b r = gamma_cdf_inv_c r a b
+gsl_gamma_cdf_inv : (a : Double) -> (b : Double) -> (r : Double) -> Double
+gsl_gamma_cdf_inv a b r = gsl_gamma_cdf_inv_c r a b

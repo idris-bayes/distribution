@@ -9,11 +9,11 @@ data GslRng : Type where
 
 ||| Initialise a GSL RNG seed
 %foreign "C:init_gsl_rng,distributions"
-init_rng_c : AnyPtr
+init_gsl_rng_c : AnyPtr
 
 export
-init_rng : GslRng
-init_rng = MkGslRng init_rng_c
+init_gsl_rng : GslRng
+init_gsl_rng = MkGslRng init_gsl_rng_c
 
 ||| Initialise (alloc) an array of doubles of length 'n'
 %foreign "C:init_array, distributions"

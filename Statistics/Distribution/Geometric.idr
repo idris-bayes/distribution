@@ -4,16 +4,16 @@ import Statistics.Distribution.GSL
 
 ||| Sample from Geometric distribution
 %foreign "C:gsl_ran_geometric,libgsl"
-geometric_c : (seed : AnyPtr) -> (p : Double) -> PrimIO Int
+gsl_geometric_c : (seed : AnyPtr) -> (p : Double) -> PrimIO Int
 
 export
-geometric : (p : Double) -> GslRng -> IO Nat
-geometric p (MkGslRng seed) = primIO (geometric_c seed p) >>= pure . cast
+gsl_geometric : (p : Double) -> GslRng -> IO Nat
+gsl_geometric p (MkGslRng seed) = primIO (gsl_geometric_c seed p) >>= pure . cast
 
 ||| Compute PDF from Geometric distribution
 %foreign "C:gsl_ran_geometric_pdf,libgsl"
-geometric_pdf_c : (obs : Int) -> (p : Double) -> Double
+gsl_geometric_pdf_c : (obs : Int) -> (p : Double) -> Double
 
 export
-geometric_pdf : (p : Double) -> (obs : Nat) -> Double
-geometric_pdf p y = geometric_pdf_c (cast y) p
+gsl_geometric_pdf : (p : Double) -> (obs : Nat) -> Double
+gsl_geometric_pdf p y = gsl_geometric_pdf_c (cast y) p
