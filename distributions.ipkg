@@ -8,7 +8,8 @@ prebuild = "cd lib && cc -shared -fPIC distributions.c -o distributions.so -lm -
 
 depends = contrib
 
-modules = Statistics.Distribution.Uniform
+modules = Statistics.Distribution
+        , Statistics.Distribution.Uniform
         , Statistics.Distribution.Normal
         , Statistics.Distribution.Binomial
         , Statistics.Distribution.Beta
@@ -17,4 +18,3 @@ modules = Statistics.Distribution.Uniform
         , Statistics.Distribution.Poisson
         , Statistics.Distribution.Dirichlet
         , Statistics.Distribution.GSL
-        , Statistics.Distribution.Test
