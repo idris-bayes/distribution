@@ -1,10 +1,10 @@
-package distributions
+package distribution
 authors   = "Minh Nguyen and Jacob Walters"
 license   = "The BSD 3-Clause License"
-sourceloc = "www.github.com/idris-bayes/distributions"
+sourceloc = "www.github.com/idris-bayes/distribution"
 
 -- script to run before building
-prebuild = "cd lib && cc -shared -fPIC distributions.c -o distributions.so -lm -lgsl"
+prebuild = "cd lib && cc -shared -fPIC distribution.c -o distribution.so -lm -lgsl"
 
 depends = contrib
 

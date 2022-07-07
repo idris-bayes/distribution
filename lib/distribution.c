@@ -32,4 +32,4 @@ gsl_rng* init_gsl_rng() {
   return r;    
 }
 
-// cc -shared -fPIC distributions.c -o distributions.so -lm -lgsl
+// cc -shared -fPIC distribution.c -o distribution.so -lm -lgsl
