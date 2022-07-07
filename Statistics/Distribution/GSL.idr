@@ -8,7 +8,7 @@ data GslRng : Type where
   MkGslRng : AnyPtr -> GslRng
 
 ||| Initialise a GSL RNG seed
-%foreign "C:init_gsl_rng,distributions"
+%foreign "C:init_gsl_rng,distribution"
 init_gsl_rng_c : AnyPtr
 
 export
@@ -16,7 +16,7 @@ init_gsl_rng : GslRng
 init_gsl_rng = MkGslRng init_gsl_rng_c
 
 ||| Initialise (alloc) an array of doubles of length 'n'
-%foreign "C:init_array, distributions"
+%foreign "C:init_array, distribution"
 init_array_c : (n : Int) -> AnyPtr
 
 export
@@ -24,15 +24,15 @@ init_array : (n : Nat) -> AnyPtr
 init_array = init_array_c . cast
 
 ||| Set base_ptr[idx] to val, and return base_ptr
-%foreign "C:assign_array, distributions"
+%foreign "C:assign_array, distribution"
 assign_array_c : (base_ptr : AnyPtr) -> (idx : Int) -> (val : Double) -> AnyPtr
 
 ||| Print an n-sized array of doubles 
-%foreign "C:print_array, distributions"
+%foreign "C:print_array, distribution"
 print_array_c : (base_ptr : AnyPtr) -> (n : Int) -> PrimIO ()
 
 ||| Get the double value at base_ptr[idx]
-%foreign "C:index_array, distributions"
+%foreign "C:index_array, distribution"
 index_array_c : (base_ptr : AnyPtr) -> (idx : Int) -> Double 
 
 export
