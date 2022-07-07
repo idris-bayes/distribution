@@ -3,14 +3,13 @@ module Statistics.Distribution.Gamma
 import Data.So
 import Statistics.Distribution.GSL
 
-{- GSL -}
 ||| Sample from Gamma distribution
 %foreign "C:gsl_ran_gamma,libgsl"
-gamma_gsl_c : (seed : AnyPtr) -> (a : Double) -> (b : Double) -> PrimIO Double
+gamma_c : (seed : AnyPtr) -> (a : Double) -> (b : Double) -> PrimIO Double
 
 export
-gamma_gsl : (a : Double) -> (b : Double) -> GslRng -> IO Double
-gamma_gsl a b (MkGslRng seed) = primIO $ gamma_gsl_c seed a b
+gamma : (a : Double) -> (b : Double) -> GslRng -> IO Double
+gamma a b (MkGslRng seed) = primIO $ gamma_c seed a b
 
 ||| Compute PDF from Gamma distribution
 %foreign "C:gsl_ran_gamma_pdf,libgsl"

@@ -6,14 +6,14 @@ import Data.Vect
 
 ||| Sample from Dirichlet distribution
 %foreign "C:gsl_ran_dirichlet,libgsl"
-dirichlet_gsl_c : (seed : AnyPtr) -> (size : Int) -> (alphas : AnyPtr) -> (output : AnyPtr) -> PrimIO ()
+dirichlet_c : (seed : AnyPtr) -> (size : Int) -> (alphas : AnyPtr) -> (output : AnyPtr) -> PrimIO ()
 
 export
-dirichlet_gsl : {n : Nat} -> (alphas : Vect (S n) Double) -> GslRng -> IO (Vect (S n) Double)
-dirichlet_gsl alphas (MkGslRng seed) = do
+dirichlet : {n : Nat} -> (alphas : Vect (S n) Double) -> GslRng -> IO (Vect (S n) Double)
+dirichlet alphas (MkGslRng seed) = do
   let alphas_ptr = to_array alphas
       output_ptr = init_array (S n) 
-  primIO $ dirichlet_gsl_c seed (cast $ S n) alphas_ptr output_ptr
+  primIO $ dirichlet_c seed (cast $ S n) alphas_ptr output_ptr
   pure (from_array output_ptr)
 
 ||| Compute PDF from Dirichlet distribution

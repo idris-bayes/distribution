@@ -54,7 +54,7 @@ from_array : {n : Nat} -> AnyPtr -> Vect (S n) Double
 from_array ptr =
   map (\idx => index_array_c ptr (cast idx)) (rangeTo (S n))
 
-export
+
 testArray : IO ()
 testArray = do
   let p = to_array [0, 1, 2, 3]

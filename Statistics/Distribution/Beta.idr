@@ -3,14 +3,14 @@ module Statistics.Distribution.Beta
 import Statistics.Distribution.GSL
 import Data.So
 
-{- GSL -}
+
 ||| Sample from Beta distribution
 %foreign "C:gsl_ran_beta,libgsl"
-beta_gsl_c : (seed : AnyPtr) -> (a : Double) -> (b : Double) -> PrimIO Double
+beta_c : (seed : AnyPtr) -> (a : Double) -> (b : Double) -> PrimIO Double
 
 export
-beta_gsl : (a : Double) -> (b : Double) -> GslRng -> IO Double
-beta_gsl a b (MkGslRng seed) = primIO $ beta_gsl_c seed a b
+beta : (a : Double) -> (b : Double) -> GslRng -> IO Double
+beta a b (MkGslRng seed) = primIO $ beta_c seed a b
 
 ||| Compute PDF from Beta distribution
 %foreign "C:gsl_ran_beta_pdf,libgsl"

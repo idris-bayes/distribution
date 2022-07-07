@@ -6,6 +6,8 @@ sourceloc = "www.github.com/idris-bayes/distributions"
 -- script to run before building
 prebuild = "cd lib && cc -shared -fPIC distributions.c -o distributions.so -lm -lgsl"
 
+depends = contrib
+
 modules = Statistics.Distribution.Uniform
         , Statistics.Distribution.Normal
         , Statistics.Distribution.Binomial

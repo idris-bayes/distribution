@@ -2,15 +2,15 @@ module Statistics.Distribution.Uniform
 
 import Data.So
 import Statistics.Distribution.GSL
+import System.Random
 
-{- GSL -}
 ||| Sample from Uniform distribution
 %foreign "C:gsl_ran_flat, libgsl"
-uniform_gsl_c : (seed : AnyPtr) -> (min : Double) -> (max : Double) -> Double
+uniform_c : (seed : AnyPtr) -> (min : Double) -> (max : Double) -> Double
 
 public export
-uniform_gsl :(min : Double) -> (max : Double) -> GslRng -> IO Double
-uniform_gsl min max (MkGslRng seed) = pure $ uniform_gsl_c seed min max
+uniform :(min : Double) -> (max : Double) -> GslRng -> IO Double
+uniform min max (MkGslRng seed) = pure $ uniform_c seed min max
 
 ||| Compute PDF from Uniform distribution
 public export
@@ -26,8 +26,3 @@ uniform_cdf_inv_c : (r : Double) -> (min : Double) -> (max : Double) -> Double
 export
 uniform_cdf_inv : (min : Double) -> (max : Double) -> (r : Double) -> Double
 uniform_cdf_inv min max r = uniform_cdf_inv_c r min max 
-
-{- Custom -}
-public export
-uniform : Double -> Double -> Double -> Double
-uniform min max x = x * (max - min) + min
