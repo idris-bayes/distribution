@@ -12,7 +12,7 @@ gsl_hypergeometric n1 n2 t (MkGslRng seed) = primIO (gsl_hypergeometric_c seed (
 
 ||| Compute PDF from Hypergeometric distribution
 %foreign "C:gsl_ran_hypergeometric_pdf,libgsl"
-gsl_hypergeometric_pdf_c : (k : Int) -> (n1 : Int) -> (n2 : Int) -> (t : Int) -> Double
+gsl_hypergeometric_pdf_c : (obs : Int) -> (n1 : Int) -> (n2 : Int) -> (t : Int) -> Double
 
 export
 gsl_hypergeometric_pdf : (n1 : Nat) -> (n2 : Nat) -> (t : Nat) -> (k : Nat) -> Double
