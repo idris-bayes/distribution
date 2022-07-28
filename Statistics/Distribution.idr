@@ -6,6 +6,7 @@ import public Statistics.Distribution.Binomial
 import public Statistics.Distribution.Dirichlet
 import public Statistics.Distribution.Gamma
 import public Statistics.Distribution.Geometric
+import public Statistics.Distribution.Hypergeometric
 import public Statistics.Distribution.Normal
 import public Statistics.Distribution.Poisson
 import public Statistics.Distribution.Uniform
