@@ -16,6 +16,7 @@ modules = Statistics.Distribution
         , Statistics.Distribution.Beta
         , Statistics.Distribution.Gamma
         , Statistics.Distribution.Geometric
+        , Statistics.Distribution.Hypergeometric
         , Statistics.Distribution.Poisson
         , Statistics.Distribution.Dirichlet
         , Statistics.Distribution.GSL

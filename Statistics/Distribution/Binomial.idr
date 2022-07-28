@@ -6,7 +6,7 @@ import Statistics.Distribution.GSL
 %foreign "C:gsl_ran_binomial, libgsl"
 gsl_binomial_c : (seed : AnyPtr) -> (p : Double) -> (n : Int) -> PrimIO Int
 
-export 
+export
 gsl_binomial : (n : Nat) -> (p : Double) -> GslRng -> IO Nat
 gsl_binomial n p (MkGslRng seed) = primIO (gsl_binomial_c seed p (cast n)) >>= pure . cast
 
