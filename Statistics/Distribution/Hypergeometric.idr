@@ -15,5 +15,5 @@ gsl_hypergeometric n1 n2 t (MkGslRng seed) = primIO (gsl_hypergeometric_c seed (
 gsl_hypergeometric_pdf_c : (k : Int) -> (n1 : Int) -> (n2 : Int) -> (t : Int) -> Double
 
 export
-gsl_hypergeometric_pdf : (k : Nat) -> (n1 : Nat) -> (n2 : Nat) -> (t : Nat) -> Double
-gsl_hypergeometric_pdf k n1 n2 t = gsl_hypergeometric_pdf_c (cast k) (cast n1) (cast n2) (cast t)
+gsl_hypergeometric_pdf : (n1 : Nat) -> (n2 : Nat) -> (k : Nat) -> (t : Nat) -> Double
+gsl_hypergeometric_pdf n1 n2 t k = gsl_hypergeometric_pdf_c (cast k) (cast n1) (cast n2) (cast t)
