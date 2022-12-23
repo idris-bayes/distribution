@@ -5,7 +5,7 @@ sourceloc = "www.github.com/idris-bayes/distribution"
 brief     = "An FFI for statistical distributions from the GSL C library."
 
 -- script to run before building
-prebuild = "cd lib && cc -shared -fPIC distribution.c -o distribution.so -lm -lgsl"
+prebuild = "cd lib && cc -shared -fPIC distribution.c -o distribution.so $(gsl-config --libs)"
 
 depends = contrib
 
