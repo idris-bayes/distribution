@@ -9,6 +9,7 @@ import public Statistics.Distribution.Geometric
 import public Statistics.Distribution.Hypergeometric
 import public Statistics.Distribution.Normal
 import public Statistics.Distribution.Poisson
+import public Statistics.Distribution.T
 import public Statistics.Distribution.Uniform
 
 {- Testing
