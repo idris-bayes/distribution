@@ -13,6 +13,7 @@ modules = Statistics.Distribution
         , Statistics.Distribution.Uniform
         , Statistics.Distribution.Normal
         , Statistics.Distribution.Binomial
+        , Statistics.Distribution.Categorical
         , Statistics.Distribution.Beta
         , Statistics.Distribution.Gamma
         , Statistics.Distribution.Geometric

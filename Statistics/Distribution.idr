@@ -3,6 +3,7 @@ module Statistics.Distribution
 import public Statistics.Distribution.GSL
 import public Statistics.Distribution.Beta
 import public Statistics.Distribution.Binomial
+import public Statistics.Distribution.Categorical
 import public Statistics.Distribution.Dirichlet
 import public Statistics.Distribution.Gamma
 import public Statistics.Distribution.Geometric
