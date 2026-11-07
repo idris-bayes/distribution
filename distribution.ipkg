@@ -18,5 +18,6 @@ modules = Statistics.Distribution
         , Statistics.Distribution.Geometric
         , Statistics.Distribution.Hypergeometric
         , Statistics.Distribution.Poisson
+        , Statistics.Distribution.T
         , Statistics.Distribution.Dirichlet
         , Statistics.Distribution.GSL
