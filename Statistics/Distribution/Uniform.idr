@@ -6,11 +6,11 @@ import System.Random
 
 ||| Sample from Uniform distribution
 %foreign "C:gsl_ran_flat, libgsl"
-gsl_uniform_c : (seed : AnyPtr) -> (min : Double) -> (max : Double) -> Double
+gsl_uniform_c : (seed : AnyPtr) -> (min : Double) -> (max : Double) -> PrimIO Double
 
 public export
 gsl_uniform :(min : Double) -> (max : Double) -> GslRng -> IO Double
-gsl_uniform min max (MkGslRng seed) = pure $ gsl_uniform_c seed min max
+gsl_uniform min max (MkGslRng seed) = primIO $ gsl_uniform_c seed min max
 
 ||| Compute PDF from Uniform distribution
 public export
